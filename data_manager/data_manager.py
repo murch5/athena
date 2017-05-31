@@ -36,16 +36,14 @@ class DataManager:
 
         data_out = None
 
-
         if isinstance(data_map, pd.DataFrame):
-            print("data_map is data frame")
 
             data_map_dict = dict(zip(data_map.iloc[:,0], data_map.iloc[:, 1]))
         else:
-            print("data_map is already dict")
+
             data_map_dict = data_map
 
-        print(data_map_dict)
+
         if isinstance(data_in, pd.Series):
             data_out = data_in.map(data_map_dict)
         elif isinstance(data_in, pd.DataFrame):
