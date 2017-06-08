@@ -2,21 +2,29 @@ import matplotlib.pyplot as plt
 
 from data_manager.datatypes.data import Data
 
+import logging as logging
+logger = logging.getLogger(__name__)
+
+import scipy as scipy
+import skimage.io as skimage_io
+
 
 class Image(Data):
-    def __init__(self):
-        Data.__init__(self)
-
-        return
 
     def load(self):
+
         if self.file_ext == "tif":
-            self.data = plt.imread(self.filename)
+            self.data = skimage_io.imread(self.filename,plugin="tifffile")
+
+        self.axes = self.data.shape
+
+        logger.debug("---Image data: Shape - " + str(self.data.shape))
 
         return
 
-    processing_type = {}
+    def __init__(self):
+        Data.__init__(self)
+        self.type = "image"
+        self.axes = None
 
-    def parse_process(self, process_type, process_XML):
-        self.processing_type[process_type](self, process_XML)
         return
