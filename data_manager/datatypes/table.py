@@ -2,10 +2,11 @@ import pandas as pd
 
 from data_manager.datatypes.data import Data
 
+import logging as logging
+logger = logging.getLogger(__name__)
+
 
 class Table(Data):
-    def __init__(self):
-        Data.__init__(self)
 
     def load(self):
 
@@ -20,22 +21,22 @@ class Table(Data):
 
         return
 
-    def filter(self, process_XML):
+    def filter(self, process_settings):
 
         return
 
-    def extract(self, process_XML):
+    def extract(self, process_settings):
         return
 
-    def subset(self, process_XML):
+    def subset(self, process_settings):
 
         axis = 0
         subset = 0
 
-        if self.checkXML(process_XML, ".//axis"):
-            axis = self.getXMLvalue(process_XML, ".//axis")
-        if self.checkXML(process_XML, ".//set"):
-            subset = self.getXMLvalue(process_XML, ".//set")
+        if process_settings.get("axis"):
+            axis = process_settings.get("axis")
+        if process_settings.get("set"):
+            subset = process_settings.get("set")
 
         if axis in ["col", "c"]:
             self.data = self.data.ix[subset]
@@ -44,11 +45,11 @@ class Table(Data):
 
         return
 
-    def groupby_value(self, process_XML):
+    def groupby_value(self, process_settings):
 
         delim_flag = "False"
-        if self.checkXML(process_XML, ".//delim"):
-            delim_flag = self.getXMLvalue(process_XML, ".//delim")
+        if process_settings.get("delim"):
+            delim_flag = process_settings.get("delim")
 
         if delim_flag == "True":
             self.data = self.data.str.split(";").apply(pd.Series, 1).stack()
@@ -67,8 +68,10 @@ class Table(Data):
         t.to_csv("test3.csv",index=False)
         return labels
 
-    processing_type = {"filter": filter, "extract": extract, "subset": subset, "groupby_val": groupby_value}
+    def __init__(self):
+        Data.__init__(self)
+        self.type = "table"
 
-    def parse_process(self, process_type, process_XML):
-        self.processing_type[process_type](self, process_XML)
-        return
+
+
+
