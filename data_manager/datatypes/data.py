@@ -1,45 +1,31 @@
 import os as os
 
+import factory_manager as fm
+
 import logging as logging
 logger = logging.getLogger(__name__)
 
-class Data:
+class Data(fm.FactoryObject):
 
     def load(self):
         return
 
-    def evaluate_process_stack(self):
-
+    def process_data(self):
         self.data = self.process_manager.pass_thru_stack(self.data)
-        logger.debug("------ Processed data shape: " + str(self.data.shape))
         pass
-
-    def get(self):
-        return self.data
 
     def set_process_manager(self, process_manager):
         self.process_manager = process_manager
         pass
 
-    def set_filename(self, filename):
-        self.filename = filename
-        self.file_ext = os.path.splitext(self.filename)[1][1:]
+    def initialize_attr(self):
 
-    def set_name(self, name):
-        self.name = name
-
-    def get_name(self):
-        return self.name
-
-    def __init__(self):
-        self.name = None
-        self.filename = None
-        self.file_ext = None
         self.data = None
-        self.processing_stack = None
+        self.process_manager = None
         self.type = None
 
-        self.processing_type = {}
+        pass
 
-        self.process_manager = None
-        return
+    def do(self, data):
+        self.load()
+        pass
