@@ -68,9 +68,6 @@ class Table(Data):
         t.to_csv("test3.csv",index=False)
         return labels
 
-    def __init__(self):
-        Data.__init__(self)
-        self.type = "table"
 
 
 

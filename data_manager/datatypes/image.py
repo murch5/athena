@@ -14,7 +14,7 @@ class Image(Data):
     def load(self):
 
         if self.file_ext == "tif":
-            self.data = skimage_io.imread(self.filename,plugin="tifffile")
+            self.data = skimage_io.imread(self.file_name,plugin="tifffile")
 
         self.axes = self.data.shape
 
@@ -22,9 +22,3 @@ class Image(Data):
 
         return
 
-    def __init__(self):
-        Data.__init__(self)
-        self.type = "image"
-        self.axes = None
-
-        return
