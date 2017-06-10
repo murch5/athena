@@ -1,9 +1,8 @@
+import data_manager.datatypes
 import pandas as pd
+import factory_manager as fm
 
-class DataManager:
-    def __init__(self):
-        self.data_list = []
-        self.data_name_dict = {}
+class DataManager(fm.FactoryStack):
 
     def add_data(self, data):
         self.data_list.append(data)
