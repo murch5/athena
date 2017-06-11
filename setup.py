@@ -1,8 +1,9 @@
 from distutils.core import setup
+from data_manager.__init__ import __version__ as version
 
 setup(
     name='datatypes',
-    version='0.1.0',
+    version=version,
     packages=['data_manager', 'data_manager.datatypes'],
     url='',
     license='',
