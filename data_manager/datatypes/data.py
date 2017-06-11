@@ -18,10 +18,9 @@ class Data(fm.FactoryObject):
         self.process_manager = process_manager
         pass
 
-    def initialize_attr(self):
+    def initialize(self):
 
         self.data = None
-        self.process_manager = None
         self.type = None
 
         pass
