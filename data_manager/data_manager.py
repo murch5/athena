@@ -4,8 +4,11 @@ import factory_manager as fm
 
 class DataManager(fm.FactoryStack):
 
-    def get(self):
-        return self.obj_list[0].get("data")
+
+    def process(self):
+
+        self.data = self.process_manager.pass_thru_stack(self.data)
+        return self.data
 
     def map_value(self, value, data_map):
         search = "key==" + str(value)
