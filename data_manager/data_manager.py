@@ -4,7 +4,6 @@ import factory_manager as fm
 
 class DataManager(fm.FactoryStack):
 
-
     def process(self):
 
         self.data = self.process_manager.pass_thru_stack(self.data)
