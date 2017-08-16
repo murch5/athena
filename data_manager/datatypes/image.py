@@ -11,7 +11,6 @@ import scipy as scipy
 import skimage.io as skimage_io
 import skimage.external.tifffile as tff
 
-
 class Image(Data):
 
     def load(self):
@@ -31,11 +30,10 @@ class Image(Data):
                 self.info = tiff[0].info()
 
 
-            logging.debug(self.info)
-
+            #logging.debug(self.info)
 
         self.axes = self.data.shape
-        print(self.data.shape)
+
         logging.debug("---Image data: Shape - " + str(self.data.shape))
 
         return
