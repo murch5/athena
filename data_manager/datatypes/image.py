@@ -15,12 +15,12 @@ class Image(Data):
 
     def load(self):
 
-        if self.file_ext == "tif":
 
+        if self.ext == "tif":
 
             #self.data = skimage_io.imread(self.file_name,plugin="tifffile")
 
-            with tff.TiffFile(self.file_name) as tiff:
+            with tff.TiffFile(self.path) as tiff:
                 for tiff_page in tiff:
                     pass
                     #print(tiff_page.page_name)
