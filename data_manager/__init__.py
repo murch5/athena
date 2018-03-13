@@ -6,3 +6,4 @@ from data_manager.datatypes.table import Table
 from data_manager.datatypes.image import Image
 
 from data_manager.data_manager import DataManager
+from data_manager.data_collection import DataCollection
