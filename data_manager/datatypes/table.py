@@ -10,13 +10,11 @@ class Table(Data):
 
     def load(self):
 
-        if self.ext == "csv":
-            self.data = pd.read_csv(self.path, sep=",",header=0)
-
-
-        elif self.ext == "tsv":
+        if self.mimetype == "text/csv":
+            self.data = pd.read_csv(self.path, sep=",", header=0)
+        elif self.mimetype == "tsv":
             self.data = pd.read_table(self.path)
-        elif self.ext == "xls" or self.ext == "xlsx":
+        elif self.mimetype == "xls" or self.mimetype == "xlsx":
             self.data = pd.read_excel(self.path)
 
         return

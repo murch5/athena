@@ -1,4 +1,3 @@
-import matplotlib.pyplot as plt
 
 from data_manager.datatypes.data import Data
 
@@ -15,8 +14,8 @@ class Image(Data):
 
     def load(self):
 
-
-        if self.ext == "tif":
+        print("loading image")
+        if self.mimetype == "image/tiff":
 
             #self.data = skimage_io.imread(self.file_name,plugin="tifffile")
 

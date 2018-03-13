@@ -15,7 +15,6 @@ class DataManager(fm.FactoryStack):
         data_out = None
 
         if isinstance(data_map, pd.DataFrame):
-
             data_map_dict = dict(zip(data_map.iloc[:,0], data_map.iloc[:, 1]))
         else:
 
