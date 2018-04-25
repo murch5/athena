@@ -16,6 +16,8 @@ class Table(Data):
             self.data = pd.read_table(self.path)
         elif self.mimetype == "xls" or self.mimetype == "xlsx":
             self.data = pd.read_excel(self.path)
+        elif self.mimetype == "stream":
+            self.data = pd.read_json(self.path, orient="split")
 
         return
 
@@ -26,8 +28,6 @@ class Table(Data):
         elif axis == 1:
             labels = self.data.columns.values.tolist()
 
-        t = pd.DataFrame(labels)
-        t.to_csv("test3.csv",index=False)
         return labels
 
 

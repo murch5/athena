@@ -2,6 +2,7 @@ import data_manager.datatypes
 import pandas as pd
 import factory_manager as fm
 
+
 class DataManager(fm.FactoryStack):
 
     def map_value(self, value, data_map):
@@ -15,11 +16,10 @@ class DataManager(fm.FactoryStack):
         data_out = None
 
         if isinstance(data_map, pd.DataFrame):
-            data_map_dict = dict(zip(data_map.iloc[:,0], data_map.iloc[:, 1]))
+            data_map_dict = dict(zip(data_map.iloc[:, 0], data_map.iloc[:, 1]))
         else:
 
             data_map_dict = data_map
-
 
         if isinstance(data_in, pd.Series):
             data_out = data_in.map(data_map_dict)
